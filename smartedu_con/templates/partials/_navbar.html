@@ -30,6 +30,11 @@
           >
             <a class="nav-link" href="{% url 'about' %}">About Us</a>
           </li>
+          <li
+            class="nav-item {% if 'courses' in request.path %}active{% endif %}"
+          >
+            <a class="nav-link" href="{% url 'courses' %}">Courses</a>
+          </li>
           <li class="nav-item dropdown">
             <a
               class="nav-link dropdown-toggle"
