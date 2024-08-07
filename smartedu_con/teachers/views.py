@@ -1,6 +1,9 @@
+from typing import Any
 from django.shortcuts import render
 from django.views.generic.list import ListView
 from teachers.models import Teacher
+from django.views.generic.detail import DetailView
+from courses.models import Course
 
 # Create your views here.
 
@@ -8,3 +11,14 @@ class TeacherListView(ListView):
     model= Teacher
     template_name= "teachers.html"
     context_object_name='teachers'
+
+
+class TeacherDetailView(DetailView):
+    model=  Teacher
+    template_name= 'teacher.html'
+    context_object_name= 'teacher'
+
+    def get_context_data(self, **kwargs: Any) :
+        context= super().get_context_data(**kwargs)
+        context['courses']=Course.objects.filter(available=True, teacher= self.kwargs['pk'])
+        return context
