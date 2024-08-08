@@ -78,8 +78,10 @@
           <li class="nav-item">
             <a class="nav-link" href="pricing.html">Pricing</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="contact.html">Contact</a>
+          <li
+            class="nav-item {% if 'contact' in request.path %} activate{% endif%}"
+          >
+            <a class="nav-link" href="{% url 'contact' %}">Contact</a>
           </li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
